@@ -1,32 +1,4 @@
-
-<?php
-
-
-
-    public function save(EcommerceCategory $request)
-    {
-        $validator = Validator::make($request->all(),$request->rules(),$request->messages());
-
-       if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator);
-        } else {
-
-            Ecategory::create([
-                'category_name' => $request->category_name,
-                'category_description' => $request->category_description,
-                'publication_status' => $request->publication_status,
-            ]);
-            Session::put('message', 'Save Category Information Successfully !');
-            return redirect()->route('route.name');
-        }
-    }
-    
-
-
-
-   
-
-  
+  <?php
     public function update(Request $request)
     {
         $messages = array(
@@ -67,18 +39,3 @@
         }
 
     }
-
-   
-   
-    public function delete($id)
-    {
-        $delete_cat = Ecategory::where('id',$id)->delete();
-        if($delete_cat){
-            Session::put('message','Delete Category Information Successfully !');
-            return redirect()->route('route.name');
-        }
-
-    }
-
-
-}
