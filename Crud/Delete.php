@@ -1,4 +1,6 @@
 <?php
+
+
     public function delete($id)
     {
         $delete_cat = Ecategory::where('id',$id)->delete();
